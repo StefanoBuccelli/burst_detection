@@ -3,16 +3,18 @@ library(pracma)
 library(e1071)
 library(sjemea)
 
-# source our functions
-code.dir <- "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\Burst_detection_methods"
-code.files = dir(code.dir, pattern = "[.r]")
+# source our burst detection functions
+code.dir <- "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\Burst_detection_methods\\"
+code.files = dir(code.dir, pattern = "[.R]")
 for (file in code.files){
   source(file = file.path(code.dir,file))
 }
 
-
 # Load spikes
 df <- scan("C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\spikes_s.txt")
+
+# run burst detections
+
 # run CMA and write to csv file
 results.CMA=CMA.method(df)
 write.csv(results.CMA, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\result_CMA.csv")
@@ -27,7 +29,7 @@ results.PS_method=PS.method(df)
 write.csv(results.PS_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\result_PS_method.csv")
 
 # run RS method and write to csv file
-results.RS_method=RS.method(df,-log(0.01)) # Minimum surprise value	???log(0.01) ??? 4.6
+results.RS_method=RS.method(df,-log(0.01)) # Minimum surprise value	log(0.01)  4.6
 write.csv(results.RS_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\result_RS_method.csv")
 
 
