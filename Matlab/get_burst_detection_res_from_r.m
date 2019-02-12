@@ -45,7 +45,7 @@ for curr_burst=1:height(resultHenning)
 end
 for curr_burst=1:height(resultPS)
     start_sample=time_stamps_samples(resultPS.beg(curr_burst));
-    stop_sample=time_stamps_samples(resultPS.end1(curr_burst));
+    stop_sample=time_stamps_samples(resultPS.end1(curr_burst));   
     plot([start_sample stop_sample],zeros(1,2)+.4,'mo-')
 end
 for curr_burst=1:height(resultRS)
