@@ -46,7 +46,6 @@ write.csv(results.pasquale_method, file = "C:\\Users\\BuccelliLab\\Documents\\Gi
 # not working...
 
 # run MI_method and write to csv file
-
 results.MI_method=MI.method(df)
 write.csv(results.MI_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\results_MI_method.csv")
 

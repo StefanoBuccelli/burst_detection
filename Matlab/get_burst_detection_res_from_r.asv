@@ -93,18 +93,6 @@ yticklabels({'CMA','Henning','PS','RS','LogISI','CH'})
 
 % xlim([1.5 2.5])
 
-%% comparing number of bursts detected
+%%
 figure
-bar([height(resultCMA) height(resultHenning) height(resultLogISI) height(resultPS) height(resultRS)])
-xticklabels({'CMA','ISI Rank','Log Isi','PS','RS'})
-ylabel('# of bursts')
-title('comparing number of bursts detected')
-
-%% comparing mean burst duration
-figure
-bar([mean(resultCMA.durn) mean(resultHenning.durn) mean(resultLogISI.durn) mean(resultPS.durn) mean(resultRS.durn)])
-xticklabels({'CMA','ISI Rank','Log Isi','PS','RS'})
-ylabel('Mean burst duration (s)')
-title('comparing mean burst duration')
-
-
+bars(height(resultCMA))
