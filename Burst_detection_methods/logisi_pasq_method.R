@@ -180,7 +180,7 @@ result
 
 
 ##Function for finding bursts, taken from sjemea
-logisi.find.burst<- function(spikes, par, debug=FALSE) {
+logisi.find.burst<- function(spikes, par, debug_id=FALSE) {
   
   ## For one spike train, find the burst using log isi method.
   ## e.g.
@@ -278,7 +278,7 @@ logisi.find.burst<- function(spikes, par, debug=FALSE) {
     return(no.bursts)
   }
   
-  if (debug) {
+  if (debug_id) {
     print("End of phase1\n")
     print(bursts)
   }
@@ -305,7 +305,7 @@ logisi.find.burst<- function(spikes, par, debug=FALSE) {
     bursts = bursts[-merge.bursts,,drop=FALSE] #delete the unwanted info.
   }
   
-  if (debug) {
+  if (debug_id) {
     print("End of phase 2\n")
     print(bursts)
   }

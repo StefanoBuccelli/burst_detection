@@ -40,6 +40,8 @@ resultHenning = importfile('result_hennig_method.csv');
 resultPS = importfile('result_PS_method.csv');
 resultRS = importfile('result_RS_method.csv');
 resultLogISI = importfile('result_pasquale_method.csv');
+resultMI = importfile('result_MI_method.csv');
+resultHSMM = importfile('result_HSMM_method.csv');
 
 %% plot spikes and burst detection
 figure
@@ -78,21 +80,45 @@ for curr_burst=1:size(resultLogISI,1)
     stop_sample=time_stamps_s(resultLogISI.end1(curr_burst));
     plot([start_sample stop_sample],zeros(1,2)+.8,'yo-')
 end
+% plot bursts from MI
+for curr_burst=1:size(resultMI,1)
+    start_sample=time_stamps_s(resultMI.beg(curr_burst));
+    stop_sample=time_stamps_s(resultMI.end1(curr_burst));
+    plot([start_sample stop_sample],zeros(1,2)+.9,'po-')
+end
+% plot bursts from HSMM
+for curr_burst=1:size(resultHSMM,1)
+    start_sample=time_stamps_s(resultHSMM.beg(curr_burst));
+    stop_sample=time_stamps_s(resultHSMM.end1(curr_burst));
+    plot([start_sample stop_sample],zeros(1,2)+1,'po-')
+end
 % plot bursts from matlab (Chiappalone)
 for curr_burst=1:size(burst_new_s,1)
     start_sample=time_stamps_s(time_stamps_s==burst_new_s(curr_burst,1));
     stop_sample=time_stamps_s(time_stamps_s==burst_new_s(curr_burst,2));
-    plot([start_sample stop_sample],zeros(1,2)+1,'co-')
+    plot([start_sample stop_sample],zeros(1,2)+1.1,'co-')
 end
 % improve graphics
 ylim([-.1 1.1])
 title('spike detection comparison')
 xlabel('Time [s]')
 yticks([0 .2 .4 .6 .8 1])
-yticklabels({'CMA','Henning','PS','RS','LogISI','CH'})
+yticklabels({'CMA','Henning','PS','RS','LogISI','MI'CH'})
 
 % xlim([1.5 2.5])
 
-%%
+%% comparing number of bursts detected
 figure
-bars(height(resultCMA))
+bar([height(resultCMA) height(resultHenning) height(resultLogISI) height(resultPS) height(resultRS)])
+xticklabels({'CMA','ISI Rank','Log Isi','PS','RS'})
+ylabel('# of bursts')
+title('comparing number of bursts detected')
+
+%% comparing mean burst duration
+figure
+bar([mean(resultCMA.durn) mean(resultHenning.durn) mean(resultLogISI.durn) mean(resultPS.durn) mean(resultRS.durn)])
+xticklabels({'CMA','ISI Rank','Log Isi','PS','RS'})
+ylabel('Mean burst duration (s)')
+title('comparing mean burst duration')
+
+
