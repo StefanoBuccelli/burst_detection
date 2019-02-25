@@ -1,13 +1,20 @@
 # loading useful libraries
 library(pracma)
 library(e1071)
-library(sjemea)
+# library(sjemea)
 
 # source our burst detection functions
 code.dir <- "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\Burst_detection_methods\\"
 code.files = dir(code.dir, pattern = "[.R]")
 for (file in code.files){
   source(file = file.path(code.dir,file))
+}
+
+# source our sjemea github detection functions
+code_sjemea.dir <- "C:\\Users\\BuccelliLab\\Documents\\GitHub\\sjemea\\R\\"
+code_sjemea.files = dir(code_sjemea.dir, pattern = "[.R]")
+for (file in code_sjemea.files){
+  source(file = file.path(code_sjemea.dir,file))
 }
 
 # Load spikes
@@ -32,17 +39,27 @@ write.csv(results.PS_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\
 results.RS_method=RS.method(df,-log(0.01)) # Minimum surprise value	log(0.01)  4.6
 write.csv(results.RS_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\result_RS_method.csv")
 
-
-# not working...
-
 # run logisi.pasq.method and write to csv file
 results.pasquale_method=logisi.pasq.method(df)
 write.csv(results.pasquale_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\result_pasquale_method.csv")
 
+# not working...
+
 # run MI_method and write to csv file
+
 results.MI_method=MI.method(df)
 write.csv(results.MI_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\results_MI_method.csv")
 
 # run RGS.method and write to csv file
 results.RGS_method=RGS.method(df)
 write.csv(results.RGS_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\result_RGS_method.csv")
+
+
+
+
+
+
+
+
+
+
