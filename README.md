@@ -1,6 +1,3 @@
-# Spike analysis
-
-
 ## burst_detection
 
 Burst detection:
