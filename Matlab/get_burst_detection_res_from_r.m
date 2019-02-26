@@ -99,7 +99,7 @@ for curr_burst=1:size(burst_new_s,1)
     plot([start_sample stop_sample],zeros(1,2)+1.1,'co-')
 end
 % improve graphics
-ylim([-.1 1.1])
+ylim([-.1 1.2])
 title('spike detection comparison')
 xlabel('Time [s]')
 yticks([0 .2 .4 .6 .8 .9 1 1.1])
