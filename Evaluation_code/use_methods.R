@@ -32,7 +32,7 @@ write.csv(results.hennig_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitH
 
 
 # run PS method and write to csv file
-results.PS_method=PS.method(df)
+results.PS_method=PS.method(df,-log(0.01))
 write.csv(results.PS_method, file = "C:\\Users\\BuccelliLab\\Documents\\GitHub\\burst_detection\\result_PS_method.csv")
 
 # run RS method and write to csv file
